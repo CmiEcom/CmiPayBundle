@@ -33,3 +33,60 @@ The default route configured in:
 // src/Resources/config/routes.xml
 	<route id="cmi_pay_request" controller="cmi.pay.controller::requestPay" path="/cmi/requestpayment" />
 ```
+
+And a controller action to render the form:
+
+```php
+namespace CmiPayBundle\Controller;
+
+......
+
+class CmiPayController extends AbstractController
+{
+    public function requestPay(Request $request)
+    {
+        $params = new CmiPay();
+        // Setup new payment parameters
+        $okUrl = $this->generateUrl('cmi_pay_okFail', [], UrlGeneratorInterface::ABSOLUTE_URL);
+        $shopUrl = $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+        $failUrl = $this->generateUrl('cmi_pay_okFail', [], UrlGeneratorInterface::ABSOLUTE_URL);
+        $callbackUrl = $this->generateUrl('cmi_pay_callback', [], UrlGeneratorInterface::ABSOLUTE_URL);
+        $rnd = microtime();
+		//Sample Order Data:
+        $params->setGatewayurl('https://testpayment.cmi.co.ma/fim/est3Dgate')
+		    ->setclientid('600000008')
+            ->setTel('0522222222')
+            ->setEmail('integration.ecom@cmi.co.ma')
+            ->setBillToName('Test Cmi')
+            ->setBillToCompany('CMI')
+            ->setBillToStreet1('BD ANFA')
+            ->setBillToStateProv('Casablanca')
+            ->setBillToPostalCode('20200')
+            ->setBillToCity('Casablanca')
+            ->setBillToCountry('MA')
+            //->setOid('12345ABCD')
+            ->setCurrency('504')
+            ->setAmount('31.50')
+            ->setOkUrl($okUrl)
+            ->setCallbackUrl($callbackUrl)
+            ->setFailUrl($failUrl)
+            ->setShopurl($shopUrl)
+            ->setEncoding('UTF-8')
+            ->setStoretype('3D_PAY_HOSTING')
+            ->setHashAlgorithm('ver3')
+            ->setTranType('PreAuth')
+            ->setRefreshtime('5')
+            ->setLang('fr')
+            ->setRnd($rnd)
+        ;  
+        $data = $this->convertData($params);
+        $hash =  $this->hashValue($data);
+        $data['HASH']=$hash;
+        $data = $this->unsetData($data);
+        return $this->render('@CmiPay/index.html.twig', [
+            'data' => $data,
+            'url' => $params->getGatewayurl()
+        ]);
+    }
+}
+```
