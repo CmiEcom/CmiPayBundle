@@ -5,9 +5,9 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cmi.pay" class="Cmi\PayBundle\CmiPay"/>
-        <service id="Cmi\PayBundle\CmiPay" alias="cmi.pay"/>
-        <service id="cmi.pay.controller" class="Cmi\PayBundle\Controller\CmiPayController" public="true">
+        <service id="cmi.pay" class="CmiPayBundle\CmiPay"/>
+        <service id="CmiPayBundle\CmiPay" alias="cmi.pay"/>
+        <service id="cmi.pay.controller" class="CmiPayBundle\Controller\CmiPayController" public="true">
             <argument type="service" id="cmi.pay" />
         </service>
     </services>

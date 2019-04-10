@@ -1,8 +1,8 @@
 <?php
 
-namespace Cmi\PayBundle\Controller;
+namespace CmiPayBundle\Controller;
 
-use Cmi\PayBundle\CmiPay;
+use CmiPayBundle\CmiPay;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;

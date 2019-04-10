@@ -1,5 +1,5 @@
 <?php
-namespace Cmi\PayBundle\DependencyInjection;
+namespace CmiPayBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;

@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cmi\\PayBundle\\": "src/"
+            "CmiPayBundle\\": "src/"
         }
     }
 }

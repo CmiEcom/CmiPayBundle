@@ -1,5 +1,5 @@
 <?php
-namespace Cmi\PayBundle;
+namespace CmiPayBundle;
 
 class CmiPay { 
    /**
