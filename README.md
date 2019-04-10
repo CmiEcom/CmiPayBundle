@@ -51,10 +51,9 @@ class CmiPayController extends AbstractController
         $shopUrl = $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
         $failUrl = $this->generateUrl('cmi_pay_okFail', [], UrlGeneratorInterface::ABSOLUTE_URL);
         $callbackUrl = $this->generateUrl('cmi_pay_callback', [], UrlGeneratorInterface::ABSOLUTE_URL);
-        $gatewayUrl = '';// Provided by CMI
         $rnd = microtime();
 		//Sample Order Data:
-        $params->setGatewayurl($gatewayUrl)
+        $params->setGatewayurl('https://....')// Provided by CMI
 		    ->setclientid('600000000')
             ->setTel('05000000')
             ->setEmail('email@domaine.ma')
@@ -63,9 +62,9 @@ class CmiPayController extends AbstractController
             ->setBillToStreet1('BillToStreet1')
             ->setBillToStateProv('BillToStateProv')
             ->setBillToPostalCode('BillToPostalCode')
-			.................
+			//.................
         ;
-		.................        
+		//.................        
     }
 }
 ```
