@@ -126,7 +126,7 @@ The default route configured in:
 	<route id="cmi_pay_okFail" controller="cmi.pay.controller::okFail" path="/cmi/okFail" />
 ```
 
-And a controller action : Callback:
+And a controller action : okFail:
 
 ```php
 namespace CmiPayBundle\Controller;
@@ -147,4 +147,24 @@ The twig template:
 ```twig
 // src/Resources/views/okFail.html.twig
 {{response}}
+```
+## Calculate Hash value
+Controller action : hashValue:
+
+```php
+namespace CmiPayBundle\Controller;
+
+......
+
+class CmiPayController extends AbstractController
+{
+..........
+   public function hashValue($data)
+    {
+        $params = new CmiPay();
+        $params->setSecretKey('TEST1234');//Secret key generated from CMI Backoffice
+        ..........        
+        return $hash;
+    }
+}
 ```
