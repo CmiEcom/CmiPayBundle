@@ -101,7 +101,7 @@ class CmiPayController extends AbstractController
     {
         $params = new CmiPay();
         $params->setSecretKey('TEST1234');
-        $storeKey = $params->getSecretKey('TEST1234');
+        $storeKey = $params->getSecretKey();
         $data = $this->unsetData($data);
         $postParams = array();
         foreach ($data as $key => $value){
