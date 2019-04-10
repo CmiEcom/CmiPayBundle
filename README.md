@@ -1,7 +1,7 @@
 # CMI payment Bundle
 Straight forward integration of [CMI](http://www.cmi.co.ma/) payment module into Symfony applications.
 
-* How CMI process works?*
+* How CMI payment process works?*
 
     A client fills the form on your side and then submits the form. Then the client will be redirected to CMI
     payment page to complete the payment. Once the payment has been completed the client has the option to return 
