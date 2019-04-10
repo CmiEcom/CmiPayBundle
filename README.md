@@ -8,3 +8,12 @@ Straight forward integration of [CMI](http://www.cmi.co.ma/) payment module into
 Install with composer:
 
     composer require cmiecom/cmi-pay-bundle
+
+Include `routing.yml` in your routing file :
+
+```yml
+// config/routes.yaml
+
+_cmi_pay:
+    resource: '@CmiPayBundle/Resources/config/routes.xml'
+```
