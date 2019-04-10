@@ -16,10 +16,5 @@
         "psr-4": {
             "Cmi\\PayBundle\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Cmi\\PayBundle\\Tests\\": "tests/"
-        }
     }
 }
