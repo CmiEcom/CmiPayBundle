@@ -108,22 +108,7 @@ class CmiPayController extends AbstractController
 ..........
     public function callback(Request $request)
     {
-        $postData = $request->request->all();
-        if( $postData){
-        $actualHash = $this->hashValue($postData);
-        $retrievedHash = $postData["HASH"];
-            if($retrievedHash == $actualHash && $_POST["ProcReturnCode"] == "00" )	{
-                $response = "ACTION=POSTAUTH";	
-            }else {
-                $response = "APPROVED";
-            }
-        } else {
-            $response = "No Data POST";
-        }		
-        
-        return $this->render('@CmiPay/callback.html.twig', [
-            "response" => $response
-        ]);
+        .......
     }
 }
 ```
@@ -153,21 +138,7 @@ class CmiPayController extends AbstractController
 ..........
     public function okFail(Request $request)
     {
-        $postData = $request->request->all();
-        if( $postData){
-            $actualHash = $this->hashValue($postData);
-            $retrievedHash = $postData["HASH"];
-            if($retrievedHash == $actualHash && $postData["ProcReturnCode"] == "00" )	{
-                $response = "HASH is successfull";	
-            }else {
-                $response = "Security Alert. The digital signature is not valid";
-            }
-        } else {
-            $response = "No Data POST";
-        }		
-        return $this->render('@CmiPay/okFail.html.twig', [
-            "response" => $response
-        ]);
+        ........
     }
 }
 ```
