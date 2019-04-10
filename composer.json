@@ -1,0 +1,25 @@
+{
+    "name": "cmiecom/cmi-pay-bundle",
+    "description": "CMI gateway payment library",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "integrationecom",
+            "email": "integration.ecom@cmi.co.ma"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cmi\\PayBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cmi\\PayBundle\\Tests\\": "tests/"
+        }
+    }
+}
