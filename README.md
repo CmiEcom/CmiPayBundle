@@ -131,7 +131,7 @@ class CmiPayController extends AbstractController
 The twig template:
 ```twig
 // src/Resources/views/callback.html.twig
-{{response}}
+{{response}} 
 ```
 ## OK / FAIL URL
 The default route configured in:
