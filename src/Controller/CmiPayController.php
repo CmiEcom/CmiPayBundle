@@ -55,7 +55,7 @@ class CmiPayController extends AbstractController
         $hash =  $this->hashValue($data);
         $data['HASH']=$hash;
         $data = $this->unsetData($data);
-        return $this->render('@CmiPay/index.html.twig', [
+        return $this->render('@CmiPay/payrequest.html.twig', [
             'data' => $data,
             'url' => $params->getGatewayurl()
         ]);

@@ -68,3 +68,22 @@ class CmiPayController extends AbstractController
     }
 }
 ```
+
+The twig template:
+```twig
+// src/Resources/views/payrequest.html.twig
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {% endblock %}
+
+{% block body %}
+
+    <form name="payForm"  id="payForm" method="post" action="{{url}}">
+        {% for name, value in data %}
+            <input type="hidden" name="{{ name }}" value="{{ value }}" />
+        {% endfor %}
+    </form>
+
+{% endblock %}
+............
+```
