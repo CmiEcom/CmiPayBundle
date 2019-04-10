@@ -54,7 +54,7 @@ class CmiPayController extends AbstractController
         $rnd = microtime();
 	//Sample Order Data:
         $params->setGatewayurl('https://....')// Provided by CMI
-            ->setclientid('600000000')
+            ->setclientid('600000000')// Provided by CMI
             ->setTel('05000000')
             ->setEmail('email@domaine.ma')
             ->setBillToName('BillToName')
@@ -86,4 +86,94 @@ The twig template:
 
 {% endblock %}
 ............
+```
+
+## Callback
+The default route configured in:
+
+```xml
+// src/Resources/config/routes.xml
+	<route id="cmi_pay_callback" controller="cmi.pay.controller::callback" path="/cmi/callback" />
+```
+
+And a controller action : Callback:
+
+```php
+namespace CmiPayBundle\Controller;
+
+......
+
+class CmiPayController extends AbstractController
+{
+..........
+    public function callback(Request $request)
+    {
+        $postData = $request->request->all();
+        if( $postData){
+        $actualHash = $this->hashValue($postData);
+        $retrievedHash = $postData["HASH"];
+            if($retrievedHash == $actualHash && $_POST["ProcReturnCode"] == "00" )	{
+                $response = "ACTION=POSTAUTH";	
+            }else {
+                $response = "APPROVED";
+            }
+        } else {
+            $response = "No Data POST";
+        }		
+        
+        return $this->render('@CmiPay/callback.html.twig', [
+            "response" => $response
+        ]);
+    }
+}
+```
+
+The twig template:
+```twig
+// src/Resources/views/callback.html.twig
+{{response}}
+```
+## OK / FAIL URL
+The default route configured in:
+
+```xml
+// src/Resources/config/routes.xml
+	<route id="cmi_pay_okFail" controller="cmi.pay.controller::okFail" path="/cmi/okFail" />
+```
+
+And a controller action : Callback:
+
+```php
+namespace CmiPayBundle\Controller;
+
+......
+
+class CmiPayController extends AbstractController
+{
+..........
+    public function okFail(Request $request)
+    {
+        $postData = $request->request->all();
+        if( $postData){
+            $actualHash = $this->hashValue($postData);
+            $retrievedHash = $postData["HASH"];
+            if($retrievedHash == $actualHash && $postData["ProcReturnCode"] == "00" )	{
+                $response = "HASH is successfull";	
+            }else {
+                $response = "Security Alert. The digital signature is not valid";
+            }
+        } else {
+            $response = "No Data POST";
+        }		
+        return $this->render('@CmiPay/okFail.html.twig', [
+            "response" => $response
+        ]);
+    }
+}
+```
+
+The twig template:
+```twig
+// src/Resources/views/okFail.html.twig
+{{response}}
 ```
