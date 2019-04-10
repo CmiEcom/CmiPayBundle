@@ -54,7 +54,7 @@ class CmiPayController extends AbstractController
         $rnd = microtime();
 	//Sample Order Data:
         $params->setGatewayurl('https://....')// Provided by CMI
-		->setclientid('600000000')
+            ->setclientid('600000000')
             ->setTel('05000000')
             ->setEmail('email@domaine.ma')
             ->setBillToName('BillToName')
