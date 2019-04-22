@@ -130,7 +130,7 @@ class CmiPay {
    *
    * @var string
    */
-  private $Encoding;
+  private $encoding;
   /**
    * storetype 
    *
@@ -318,10 +318,10 @@ class CmiPay {
     return ($this);
   }
   public function getEncoding() {
-    return  $this->Encoding;
+    return  $this->encoding;
   }
-  public function setEncoding($Encoding) {
-    $this->Encoding = $Encoding;
+  public function setEncoding($encoding) {
+    $this->encoding = $encoding;
     return ($this);
   }
   public function getStoretype() {
