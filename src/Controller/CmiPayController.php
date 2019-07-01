@@ -87,7 +87,7 @@ class CmiPayController extends AbstractController
             if($retrievedHash == $actualHash && $_POST["ProcReturnCode"] == "00" )	{
                 $response = "ACTION=POSTAUTH";	
             }else {
-                $response = "APPROVED";
+                $response = "FAILURE";
             }
         } else {
             $response = "No Data POST";
